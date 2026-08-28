@@ -1,0 +1,62 @@
+[
+  {
+    "role": "GenAI Engineer",
+    "family": "ai",
+    "core_skills": ["python", "langchain", "langgraph", "rag", "embeddings", "vector databases", "prompt engineering", "tool calling", "fastapi", "llm"],
+    "nice_to_have": ["langsmith", "agent evaluation", "ai governance", "docker", "ci/cd"]
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "family": "ai",
+    "core_skills": ["python", "pytorch", "scikit-learn", "pandas", "numpy", "mlops", "model deployment", "sql"],
+    "nice_to_have": ["kubernetes", "airflow", "feature stores", "aws"]
+  },
+  {
+    "role": "Backend Engineer",
+    "family": "backend",
+    "core_skills": ["python", "fastapi", "rest apis", "sql", "postgresql", "docker", "microservices", "git"],
+    "nice_to_have": ["redis", "kafka", "grpc", "aws", "ci/cd"]
+  },
+  {
+    "role": "Data Engineer",
+    "family": "data",
+    "core_skills": ["python", "sql", "spark", "airflow", "etl", "data warehousing", "docker"],
+    "nice_to_have": ["dbt", "kafka", "snowflake", "aws", "terraform"]
+  },
+  {
+    "role": "MLOps Engineer",
+    "family": "ai",
+    "core_skills": ["python", "docker", "kubernetes", "ci/cd", "mlflow", "model deployment", "monitoring", "terraform"],
+    "nice_to_have": ["kubeflow", "prometheus", "aws", "airflow"]
+  },
+  {
+    "role": "AI Product Engineer",
+    "family": "ai",
+    "core_skills": ["python", "typescript", "llm", "rag", "prompt engineering", "rest apis", "react", "fastapi"],
+    "nice_to_have": ["langchain", "vector databases", "observability", "docker"]
+  },
+  {
+    "role": "Full Stack Developer",
+    "family": "web",
+    "core_skills": ["javascript", "typescript", "react", "node.js", "rest apis", "sql", "git", "html", "css"],
+    "nice_to_have": ["next.js", "docker", "graphql", "aws"]
+  },
+  {
+    "role": "Data Scientist",
+    "family": "data",
+    "core_skills": ["python", "pandas", "numpy", "scikit-learn", "statistics", "sql", "data visualization", "machine learning"],
+    "nice_to_have": ["pytorch", "nlp", "a/b testing", "spark"]
+  },
+  {
+    "role": "Cloud Engineer",
+    "family": "infra",
+    "core_skills": ["aws", "terraform", "docker", "kubernetes", "ci/cd", "linux", "networking", "python"],
+    "nice_to_have": ["ansible", "prometheus", "gcp", "azure"]
+  },
+  {
+    "role": "DevOps Engineer",
+    "family": "infra",
+    "core_skills": ["docker", "kubernetes", "ci/cd", "github actions", "terraform", "linux", "bash", "monitoring"],
+    "nice_to_have": ["helm", "argocd", "prometheus", "aws"]
+  }
+]

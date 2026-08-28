@@ -1,0 +1,11 @@
+# Core runtime (always required). Ranges, not hard pins.
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+pydantic>=2.9,<3
+pydantic-settings>=2.5,<3
+python-multipart>=0.0.9,<1
+python-dotenv>=1,<2
+
+# LangGraph is core here — the whole app is a graph. Pulls langchain-core +
+# langgraph-checkpoint. Pure Python, installs on 3.11-3.14.
+langgraph>=1,<2

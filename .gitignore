@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Env / secrets
+.env
+
+# Graph state
+*.sqlite
+*.sqlite3
+.careergraph*
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+
+# Streamlit
+.streamlit/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

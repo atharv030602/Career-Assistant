@@ -1,0 +1,39 @@
+name: career-assistant
+
+services:
+  backend:
+    build:
+      context: ./backend
+      args:
+        INSTALL_AI: "true"
+    ports:
+      - "8000:8000"
+    environment:
+      ENVIRONMENT: docker
+      LOG_JSON: "true"
+      CHECKPOINT_BACKEND: sqlite
+      CHECKPOINT_DB: /data/careergraph.sqlite
+      CORS_ORIGINS: http://localhost:8501
+      LLM_PROVIDER: ${LLM_PROVIDER:-openai}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      OPENAI_CHAT_MODEL: ${OPENAI_CHAT_MODEL:-gpt-4o-mini}
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+      LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
+      LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
+    volumes:
+      - graph_data:/data
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8501:8501"
+    environment:
+      API_BASE_URL: http://backend:8000/api
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  graph_data:

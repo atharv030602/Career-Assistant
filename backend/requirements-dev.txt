@@ -1,0 +1,4 @@
+# Test + lint tooling. Not installed in production.
+pytest>=8,<9
+httpx>=0.27,<1
+ruff>=0.6
