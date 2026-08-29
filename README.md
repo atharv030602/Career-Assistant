@@ -96,10 +96,21 @@ Put `OPENAI_API_KEY` (+ `OPENAI_BASE_URL` for OpenRouter) in a root `.env` to en
 ## Tests & CI
 
 ```bash
-cd backend && pip install -r requirements-dev.txt && pytest -q   # 15 tests, no network, no keys
-ruff check app tests && ruff format --check app tests
+cd backend && pip install -r requirements-dev.txt
+pytest -q                               # 19 tests, no network, no keys
+ruff check app tests eval && ruff format --check app tests eval
 ```
 GitHub Actions runs lint + format + tests + Docker builds on every push/PR to `main`.
+
+## Evaluation
+
+```bash
+cd backend && python -m eval.run_eval --no-judge     # 12-case dataset, deterministic metrics
+```
+Harness runs the whole graph per case and scores completion, routing accuracy,
+skill-gap recall/precision, roadmap & interview coverage, latency — plus an
+optional LLM-as-judge and a LangSmith `evaluate()` hook. Methodology + results:
+**[docs/EVALUATION.md](docs/EVALUATION.md)**.
 
 ## Enabling the LLM path
 
@@ -119,8 +130,8 @@ Render (backend, Python runtime, `pip install -r requirements.txt -r requirement
 
 ## Roadmap
 
-- `eval/` — LangSmith dataset + LLM-as-judge metrics (skill-gap recall,
-  tool-selection accuracy, roadmap relevance). See `PLAN.md`.
+- Grow the eval dataset to ~40 cases incl. adversarial résumés; add a strict
+  node-order (trajectory) metric.
 - SSE streaming of node/token events.
 - Supervisor-agent routing as an alternative to the fixed pipeline.
 
