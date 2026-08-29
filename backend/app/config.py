@@ -26,8 +26,9 @@ class Settings(BaseSettings):
     llm_temperature: float = 0.2
     llm_timeout_seconds: int = 45
 
-    # Graph checkpointer
-    checkpoint_backend: str = "sqlite"  # sqlite | memory
+    # Graph checkpointer. "memory" is the default (SQLite needs
+    # requirements-sqlite.txt, whose releases currently lag langgraph 1.x).
+    checkpoint_backend: str = "memory"  # memory | sqlite
     checkpoint_db: str = ".careergraph.sqlite"
 
     # Observability

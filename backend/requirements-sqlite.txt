@@ -1,0 +1,9 @@
+# Optional — persistent SQLite checkpointer (CHECKPOINT_BACKEND=sqlite),
+# so graph thread state survives a restart.
+#
+# NOTE: langgraph-checkpoint-sqlite releases currently pin an older
+# langgraph-checkpoint than langgraph 1.x needs. Install this ONLY in an
+# isolated env and verify `python -c "import langgraph"` still works, or wait
+# for an aligned release. Everywhere else use CHECKPOINT_BACKEND=memory —
+# build.py falls back to it automatically if this import fails.
+langgraph-checkpoint-sqlite

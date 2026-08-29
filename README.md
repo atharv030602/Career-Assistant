@@ -12,7 +12,8 @@ LangSmith**.
 
 > **Runs with zero API keys.** Every agent has deterministic logic; an LLM
 > (Gemini / OpenAI / OpenRouter) only *enriches* the output. Set a key to turn
-> that on. The checkpointer degrades from SQLite to in-memory automatically.
+> that on. The graph checkpointer defaults to in-memory (SQLite is opt-in via
+> `requirements-sqlite.txt`).
 
 ```
 career-assistant/
@@ -63,7 +64,7 @@ Full diagram + state schema + agent responsibilities: **[docs/ARCHITECTURE.md](d
 cd backend
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt                        # core (LangGraph) — deterministic mode
-pip install -r requirements-ai.txt                     # optional — LLM enrichment + SQLite checkpointer
+pip install -r requirements-ai.txt                     # optional — LLM enrichment (Gemini/OpenAI/OpenRouter)
 pip install -r requirements-dev.txt                    # tests + lint
 cp .env.example .env                                   # optional: set LLM_PROVIDER + a key
 uvicorn app.main:app --reload --port 8000              # http://localhost:8000/docs
@@ -88,7 +89,7 @@ curl -s localhost:8000/api/sessions -H 'content-type: application/json' -d '{
 ## Run it — Docker
 
 ```bash
-docker compose up --build       # backend :8000, frontend :8501, SQLite checkpointer on a volume
+docker compose up --build       # backend :8000, frontend :8501 (in-memory checkpointer)
 ```
 Put `OPENAI_API_KEY` (+ `OPENAI_BASE_URL` for OpenRouter) in a root `.env` to enable LLM enrichment.
 
@@ -105,7 +106,7 @@ GitHub Actions runs lint + format + tests + Docker builds on every push/PR to `m
 | Feature | Needs |
 |---|---|
 | LLM-enriched resume review (nuanced strengths / rewrites) | provider key + `requirements-ai.txt` |
-| SQLite checkpointer (thread state survives restarts) | `requirements-ai.txt`, `CHECKPOINT_BACKEND=sqlite` |
+| SQLite checkpointer (thread state survives restarts) | `requirements-sqlite.txt` + `CHECKPOINT_BACKEND=sqlite` (see the file's note) |
 | LangSmith tracing of the graph run | `LANGSMITH_TRACING=true` + `LANGSMITH_API_KEY` |
 
 `LLM_PROVIDER=openai` + `OPENAI_BASE_URL=https://openrouter.ai/api/v1` uses OpenRouter with any `openai/...` model.

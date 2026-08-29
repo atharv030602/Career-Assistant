@@ -1,9 +1,11 @@
-# Optional — enables the LLM enrichment path in the agents and SQLite
-# checkpointing. Without these the graph runs fully on deterministic agent
-# logic with an in-memory checkpointer.
+# Optional — enables the LLM enrichment path in the agents. Without these the
+# graph runs fully on deterministic agent logic.
 #   pip install -r requirements.txt -r requirements-ai.txt
+#
+# Pure Python, installs on 3.11-3.14. No checkpointer deps here — the SQLite
+# checkpointer lives in requirements-sqlite.txt (its releases currently lag
+# langgraph 1.x); CHECKPOINT_BACKEND=memory is the default.
 langchain-core>=1.6,<2
 langchain-openai>=1.6,<2
 langchain-google-genai>=4.3,<5
-langgraph-checkpoint-sqlite>=2,<3
 langsmith>=0.11,<1

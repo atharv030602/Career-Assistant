@@ -90,9 +90,10 @@ boots without the AI stack. `llm_json()` is the only entry point the agents use.
 
 ## Checkpointer (`app/graph/build.py`)
 
-`CHECKPOINT_BACKEND=sqlite` → `SqliteSaver` (needs `langgraph-checkpoint-sqlite`,
-persists across restarts). Falls back to `MemorySaver` if the package is missing
-or `CHECKPOINT_BACKEND=memory`. `active_checkpointer_name()` reports what's live.
+Defaults to `MemorySaver` (`CHECKPOINT_BACKEND=memory`). `CHECKPOINT_BACKEND=sqlite`
+→ `SqliteSaver` (needs `requirements-sqlite.txt`; its releases currently lag
+langgraph 1.x, so it's opt-in) — and still falls back to `MemorySaver` if the
+import fails. `active_checkpointer_name()` reports what's live.
 
 ## Static data (`app/data/`)
 

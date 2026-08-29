@@ -11,8 +11,7 @@ services:
     environment:
       ENVIRONMENT: docker
       LOG_JSON: "true"
-      CHECKPOINT_BACKEND: sqlite
-      CHECKPOINT_DB: /data/careergraph.sqlite
+      CHECKPOINT_BACKEND: memory
       CORS_ORIGINS: http://localhost:8501
       LLM_PROVIDER: ${LLM_PROVIDER:-openai}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
@@ -21,8 +20,6 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
       LANGSMITH_TRACING: ${LANGSMITH_TRACING:-false}
       LANGSMITH_API_KEY: ${LANGSMITH_API_KEY:-}
-    volumes:
-      - graph_data:/data
     restart: unless-stopped
 
   frontend:
@@ -34,6 +31,3 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
-
-volumes:
-  graph_data:
